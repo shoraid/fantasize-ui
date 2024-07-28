@@ -1,8 +1,9 @@
 import clsx from "clsx/lite";
-import React from "react";
+import React, { ButtonHTMLAttributes, ForwardedRef, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface IconButtonProps {
+export interface IconButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: any;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   color?:
@@ -16,52 +17,55 @@ export interface IconButtonProps {
     | "error"
     | "light"
     | "dark";
-  className?: string;
-  children?: React.ReactNode;
 }
 
 const DEFAULT_SIZE = "sm";
 const DEFAULT_COLOR = "base";
 
-export default function IconButton(props: IconButtonProps) {
-  const {
-    label,
-    color = DEFAULT_COLOR,
-    size = DEFAULT_SIZE,
-    className,
-    children,
-  } = props;
+const IconButton = forwardRef(
+  (props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+    const {
+      label,
+      color = DEFAULT_COLOR,
+      size = DEFAULT_SIZE,
+      className,
+      children,
+    } = props;
 
-  const sizeStyles = styles.containerSize[size];
+    const sizeStyles = styles.containerSize[size];
 
-  const colorStyles = styles.color[color];
+    const colorStyles = styles.color[color];
 
-  const isSvgElement = (
-    element: React.ReactNode,
-  ): element is React.ReactElement =>
-    React.isValidElement(element) && element.type === "svg";
+    const isSvgElement = (
+      element: React.ReactNode,
+    ): element is React.ReactElement =>
+      React.isValidElement(element) && element.type === "svg";
 
-  const applySizeToChildren = (element: React.ReactNode) => {
-    if (isSvgElement(element)) {
-      return React.cloneElement(element, {
-        className: twMerge(styles.size[size], element.props.className),
-      });
-    }
-    return element;
-  };
+    const applySizeToChildren = (element: React.ReactNode) => {
+      if (isSvgElement(element)) {
+        return React.cloneElement(element, {
+          className: twMerge(styles.size[size], element.props.className),
+        });
+      }
+      return element;
+    };
 
-  return (
-    <div
-      className={twMerge(styles.default, sizeStyles, colorStyles, className)}
-    >
-      {children ? applySizeToChildren(children) : applySizeToChildren(label)}
-    </div>
-  );
-}
+    return (
+      <button
+        ref={ref}
+        className={twMerge(styles.default, sizeStyles, colorStyles, className)}
+      >
+        {children ? applySizeToChildren(children) : applySizeToChildren(label)}
+      </button>
+    );
+  },
+);
+
+export default IconButton;
 
 const styles = {
   default: clsx(
-    "inline-block transform cursor-pointer font-medium transition-all select-none active:scale-95",
+    "inline-flex transform cursor-pointer items-center justify-center font-medium transition-all select-none",
   ),
   containerSize: {
     xs: clsx("rounded-sm p-1"),
@@ -78,15 +82,17 @@ const styles = {
     xl: clsx("h-10 w-10"),
   },
   color: {
-    base: clsx("bg-transparent hover:bg-slate-100"),
-    primary: clsx("bg-blue-400 hover:bg-blue-500"),
-    secondary: clsx("bg-indigo-400 text-slate-50 hover:bg-indigo-500"),
-    tertiary: clsx("bg-indigo-200 hover:bg-indigo-300"),
-    info: clsx("bg-cyan-400 hover:bg-cyan-500"),
-    success: clsx("bg-green-400 hover:bg-green-500"),
-    warning: clsx("bg-yellow-400 hover:bg-yellow-500"),
-    error: clsx("bg-red-400 hover:bg-red-500"),
+    base: clsx("bg-transparent hover:bg-slate-100 active:bg-transparent"),
+    primary: clsx("bg-blue-400 hover:bg-blue-500 active:bg-blue-400"),
+    secondary: clsx(
+      "bg-indigo-400 text-slate-50 hover:bg-indigo-500 active:bg-indigo-400",
+    ),
+    tertiary: clsx("bg-fuchsia-400 hover:bg-fuchsia-500 active:bg-fuchsia-400"),
+    info: clsx("bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-400"),
+    success: clsx("bg-green-400 hover:bg-green-500 active:bg-green-400"),
+    warning: clsx("bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-400"),
+    error: clsx("bg-red-400 hover:bg-red-500 active:bg-red-400"),
     light: clsx("bg-white"),
-    dark: clsx("bg-black text-white"),
+    dark: clsx("bg-black text-white hover:bg-black/80 active:bg-black"),
   },
 };
