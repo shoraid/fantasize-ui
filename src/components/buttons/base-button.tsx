@@ -30,6 +30,7 @@ const BaseButton = forwardRef(
       size = DEFAULT_SIZE,
       className,
       children,
+      ...rest
     } = props;
 
     const sizeStyles = styles.size[size];
@@ -40,6 +41,7 @@ const BaseButton = forwardRef(
       <button
         ref={ref}
         className={twMerge(styles.default, sizeStyles, colorStyles, className)}
+        {...rest}
       >
         {children ?? label}
       </button>

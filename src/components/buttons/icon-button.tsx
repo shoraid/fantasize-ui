@@ -30,6 +30,7 @@ const IconButton = forwardRef(
       size = DEFAULT_SIZE,
       className,
       children,
+      ...rest
     } = props;
 
     const sizeStyles = styles.containerSize[size];
@@ -54,6 +55,7 @@ const IconButton = forwardRef(
       <button
         ref={ref}
         className={twMerge(styles.default, sizeStyles, colorStyles, className)}
+        {...rest}
       >
         {children ? applySizeToChildren(children) : applySizeToChildren(label)}
       </button>
