@@ -1,3 +1,4 @@
+import Helper from "@/components/forms/helper";
 import Input from "@/components/forms/input";
 import Label from "@/components/forms/label";
 
@@ -15,25 +16,29 @@ export default function Page() {
           <Label size="lg">Large</Label>
         </div>
 
-        <div className="space-y-6 space-x-6">
+        <div className="mb-4 space-y-6 space-x-6">
           <div>
             <Label size="xs">Extra Small</Label>
             <Input size="xs" placeholder="Extra Small" />
+            <Helper size="xs">xs Helper</Helper>
           </div>
 
           <div>
             <Label size="sm">Small</Label>
             <Input size="sm" placeholder="Small" />
+            <Helper size="sm">sm Helper</Helper>
           </div>
 
           <div>
             <Label size="md">Medium</Label>
             <Input size="md" placeholder="Medium" />
+            <Helper size="md">md Helper</Helper>
           </div>
 
           <div>
             <Label size="lg">Large</Label>
             <Input size="lg" placeholder="Large" />
+            <Helper size="lg">lg Helper</Helper>
           </div>
         </div>
 
