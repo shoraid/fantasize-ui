@@ -1,45 +1,39 @@
-import BaseInput from "@/components/forms/base-input";
+import Input from "@/components/forms/input";
 
-export default function Input() {
+export default function Page() {
   return (
     <div className="flex min-h-screen flex-col items-center gap-y-12 pt-[7%] pb-10">
       <div className="container w-[85%]">
         <div className="space-y-6 space-x-6">
-          <BaseInput size="xs" placeholder="Extra Small" />
+          <Input size="xs" placeholder="Extra Small" />
 
-          <BaseInput size="sm" placeholder="Small" />
+          <Input size="sm" placeholder="Small" />
 
-          <BaseInput size="md" placeholder="Medium" />
+          <Input size="md" placeholder="Medium" />
 
-          <BaseInput size="lg" placeholder="Large" />
+          <Input size="lg" placeholder="Large" />
         </div>
       </div>
 
       <div className="container w-[85%]">
         <div className="flex w-[40%] flex-col gap-y-6">
-          <BaseInput placeholder="disabled" disabled />
+          <Input placeholder="disabled" disabled />
 
-          <BaseInput color="primary" placeholder="disabled primary" disabled />
+          <Input color="primary" placeholder="disabled primary" disabled />
 
-          <BaseInput color="base" placeholder="base" />
+          <Input color="base" placeholder="base" />
 
-          <BaseInput color="primary" placeholder="primary" />
+          <Input color="primary" placeholder="primary" />
 
-          <BaseInput color="secondary" placeholder="secondary" />
+          <Input color="secondary" placeholder="secondary" />
 
-          <BaseInput color="tertiary" placeholder="tertiary" />
+          <Input color="tertiary" placeholder="tertiary" />
 
-          <BaseInput color="info" placeholder="info" />
+          <Input color="success" placeholder="success" />
 
-          <BaseInput color="success" placeholder="success" />
+          <Input color="warning" placeholder="warning" />
 
-          <BaseInput color="warning" placeholder="warning" />
-
-          <BaseInput color="error" placeholder="error" />
-
-          <BaseInput color="light" placeholder="light" />
-
-          <BaseInput color="dark" placeholder="dark" />
+          <Input color="error" placeholder="error" />
         </div>
       </div>
     </div>
