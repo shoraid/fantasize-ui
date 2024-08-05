@@ -2,8 +2,7 @@ import clsx from "clsx/lite";
 import { ButtonHTMLAttributes, ForwardedRef, forwardRef } from "react";
 import { twMerge } from "tailwind-merge";
 
-export interface BaseButtonProps
-  extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label?: any;
   size?: "xs" | "sm" | "md" | "lg" | "xl";
   color?:
@@ -11,7 +10,6 @@ export interface BaseButtonProps
     | "primary"
     | "secondary"
     | "tertiary"
-    | "info"
     | "success"
     | "warning"
     | "error"
@@ -22,8 +20,8 @@ export interface BaseButtonProps
 const DEFAULT_SIZE = "md";
 const DEFAULT_COLOR = "base";
 
-const BaseButton = forwardRef(
-  (props: BaseButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
+const Button = forwardRef(
+  (props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
     const {
       label,
       color = DEFAULT_COLOR,
@@ -49,11 +47,13 @@ const BaseButton = forwardRef(
   },
 );
 
-export default BaseButton;
+Button.displayName = "Button";
+
+export default Button;
 
 const styles = {
   default: clsx(
-    "inline-flex transform cursor-pointer items-center justify-center gap-x-1 font-medium transition select-none",
+    "inline-flex transform cursor-pointer items-center justify-center gap-x-1 font-medium text-gray-900 transition select-none",
   ),
   size: {
     xs: clsx("rounded-sm py-1 px-2 text-xs"),
@@ -68,8 +68,9 @@ const styles = {
     secondary: clsx(
       "bg-indigo-400 text-slate-50 hover:bg-indigo-500 active:bg-indigo-400",
     ),
-    tertiary: clsx("bg-fuchsia-400 hover:bg-fuchsia-500 active:bg-fuchsia-400"),
-    info: clsx("bg-cyan-400 hover:bg-cyan-500 active:bg-cyan-400"),
+    tertiary: clsx(
+      "bg-fuchsia-400 hover:bg-fuchsia-600/80 active:bg-fuchsia-400",
+    ),
     success: clsx("bg-green-400 hover:bg-green-500 active:bg-green-400"),
     warning: clsx("bg-yellow-400 hover:bg-yellow-500 active:bg-yellow-400"),
     error: clsx("bg-red-400 hover:bg-red-500 active:bg-red-400"),

@@ -1,5 +1,6 @@
-import BaseButton from "@/components/buttons/base-button";
+import Button from "@/components/buttons/button";
 import Link from "next/link";
+import { MdOutlineAdd } from "react-icons/md";
 
 export default function Buttons() {
   return (
@@ -7,63 +8,49 @@ export default function Buttons() {
       <div className="container w-[85%]">
         <div className="space-y-6 space-x-6">
           <Link href="/login">
-            <BaseButton size="md">Login</BaseButton>
+            <Button size="md">Login</Button>
           </Link>
 
-          <BaseButton size="xs">Button</BaseButton>
+          <Button size="xs">Button</Button>
 
-          <BaseButton size="sm">Button</BaseButton>
+          <Button size="sm">Button</Button>
 
-          <BaseButton size="md">Button</BaseButton>
+          <Button size="md">Button</Button>
 
-          <BaseButton size="lg">Button</BaseButton>
+          <Button size="lg">Button</Button>
 
-          <BaseButton size="xl">Button</BaseButton>
+          <Button size="xl">Button</Button>
         </div>
       </div>
 
       <div className="container w-[85%]">
         <div className="space-y-6 space-x-6">
-          <BaseButton color="primary">Primary</BaseButton>
+          <Button color="primary">Primary</Button>
 
-          <BaseButton color="secondary">Secondary</BaseButton>
+          <Button color="secondary">Secondary</Button>
 
-          <BaseButton color="tertiary">Tertiary</BaseButton>
+          <Button color="tertiary">Tertiary</Button>
 
-          <BaseButton color="info">Info</BaseButton>
+          <Button color="success">Success</Button>
 
-          <BaseButton color="success">Success</BaseButton>
+          <Button color="warning">Warning</Button>
 
-          <BaseButton color="warning">Warning</BaseButton>
+          <Button color="error">Error</Button>
 
-          <BaseButton color="error">Error</BaseButton>
+          <Button color="light">Light</Button>
 
-          <BaseButton color="light">Light</BaseButton>
-
-          <BaseButton color="dark">Dark</BaseButton>
+          <Button color="dark">Dark</Button>
         </div>
       </div>
 
       <div className="container w-[85%]">
         <div className="space-y-6 space-x-6">
-          <BaseButton color="success" label="Label" />
+          <Button color="success" label="Label" />
 
-          <BaseButton color="primary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block h-4 w-4 stroke-current"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
+          <Button color="primary">
+            <MdOutlineAdd className="size-5" />
             Primary
-          </BaseButton>
+          </Button>
         </div>
       </div>
     </div>
