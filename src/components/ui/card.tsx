@@ -18,6 +18,8 @@ const Card = forwardRef(
   },
 );
 
+Card.displayName = "Card";
+
 export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {}
 
 const CardHeader = forwardRef(
@@ -33,6 +35,8 @@ const CardHeader = forwardRef(
     );
   },
 );
+
+CardHeader.displayName = "CardHeader";
 
 export interface CardBodyProps extends HTMLAttributes<HTMLDivElement> {}
 
@@ -50,6 +54,8 @@ const CardBody = forwardRef(
   },
 );
 
+CardBody.displayName = "CardBody";
+
 export interface CardFooterProps extends HTMLAttributes<HTMLDivElement> {}
 
 const CardFooter = forwardRef(
@@ -65,6 +71,8 @@ const CardFooter = forwardRef(
     );
   },
 );
+
+CardFooter.displayName = "CardFooter";
 
 export default Card;
 
